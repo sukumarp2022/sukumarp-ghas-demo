@@ -49,8 +49,12 @@ AKIAIOSFODNN7EXAMPLE
 
 1. Open **Settings → Advanced Security** and confirm **Secret scanning** and
    **Push protection** are enabled.
-2. Open **Security and quality → Secret scanning** and open the alert from
+2. Open **Security and quality → Secret scanning** and check for the alert from
    `demo/secret-scanning`.
+3. If the placeholder is not detected, enable **Generic patterns** in
+   **Settings → Advanced Security** when that option is available. Repository
+   custom patterns and deterministic demo alerts may require GitHub Secret
+   Protection in an organisation.
 
 To demonstrate push protection:
 
@@ -64,7 +68,11 @@ git commit -m "demo: add synthetic credential"
 git push -u origin demo/secret-push-blocked
 ```
 
-GitHub should reject the push. Show the detected pattern and the remediation link.
+GitHub should reject the push when the provider or generic pattern is available.
+Show the detected pattern and remediation link. If the documented example is
+treated as a known test value, use a temporary provider-issued test credential
+only in an untracked local file, revoke it immediately after the demonstration,
+and never commit it to this repository.
 Then remove the file, commit, and push again:
 
 ```bash
