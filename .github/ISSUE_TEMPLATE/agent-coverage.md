@@ -12,7 +12,7 @@ Increase meaningful test coverage for the user-search endpoint in `app/main.py`.
 
 ## Requirements
 
-- Run `pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml`.
+- Run `python -m pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml`.
 - Cover the missing-name response.
 - Cover the name-too-long response.
 - Cover the no-results response.
