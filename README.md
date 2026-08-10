@@ -40,11 +40,11 @@ request fail, then see the fix pass.
 
 ## Demo 1: secret scanning and push protection
 
-The `demo/secret-scanning` branch contains the documented GitHub token test
-format. It is not a live credential:
+The `demo/secret-scanning` branch contains the documented AWS example access key.
+It is not a live credential:
 
 ```text
-ghp_0123456789abcdefghijklmnopqrstuvwxyz
+AKIAIOSFODNN7EXAMPLE
 ```
 
 1. Open **Settings → Advanced Security** and confirm **Secret scanning** and
@@ -58,7 +58,7 @@ To demonstrate push protection:
 git switch main
 git pull --ff-only origin main
 git switch -c demo/secret-push-blocked
-printf '%s\n' 'GITHUB_TOKEN=ghp_0123456789abcdefghijklmnopqrstuvwxyz' > demo-secret.env
+printf '%s\n' 'AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE' > demo-secret.env
 git add demo-secret.env
 git commit -m "demo: add synthetic credential"
 git push -u origin demo/secret-push-blocked
