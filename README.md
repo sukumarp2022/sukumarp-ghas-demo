@@ -40,35 +40,25 @@ request fail, then see the fix pass.
 
 ## Demo 1: secret scanning and push protection
 
-The `demo/secret-scanning` branch contains this synthetic value:
+The `demo/secret-scanning` branch contains the documented GitHub token test
+format. It is not a live credential:
 
 ```text
-DEMO_0123456789ABCDEF0123456789ABCDEF
+ghp_0123456789abcdefghijklmnopqrstuvwxyz
 ```
 
-For a reliable, harmless demonstration, create a custom pattern:
-
-1. Open **Settings → Advanced Security**.
-2. In **Secret scanning**, open **Custom patterns**.
-3. Click **New pattern**.
-4. Name it `Demo API key`.
-5. Use this regular expression:
-
-   ```text
-   DEMO_[A-Z0-9]{32}
-   ```
-
-6. Enable it for secret scanning and push protection, then save it.
-7. Open **Security and quality → Secret scanning** and open the alert from
+1. Open **Settings → Advanced Security** and confirm **Secret scanning** and
+   **Push protection** are enabled.
+2. Open **Security and quality → Secret scanning** and open the alert from
    `demo/secret-scanning`.
 
-To demonstrate push protection after the custom pattern is enabled:
+To demonstrate push protection:
 
 ```bash
 git switch main
 git pull --ff-only origin main
 git switch -c demo/secret-push-blocked
-printf '%s\n' 'DEMO_API_KEY=DEMO_FEDCBA9876543210FEDCBA9876543210' > demo-secret.env
+printf '%s\n' 'GITHUB_TOKEN=ghp_0123456789abcdefghijklmnopqrstuvwxyz' > demo-secret.env
 git add demo-secret.env
 git commit -m "demo: add synthetic credential"
 git push -u origin demo/secret-push-blocked
