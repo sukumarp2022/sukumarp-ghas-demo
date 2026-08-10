@@ -32,8 +32,7 @@ def create_app():
 
         with get_db() as db:
             rows = db.execute(
-                "SELECT id, name FROM users WHERE name LIKE ?",
-                (f"%{name}%",),
+                f"SELECT id, name FROM users WHERE name LIKE '%{name}%'"
             ).fetchall()
 
         return jsonify(
