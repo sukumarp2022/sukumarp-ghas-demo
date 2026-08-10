@@ -172,7 +172,7 @@ Agent-generated code still requires developer review and approval.
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml
+python -m pytest --cov=app --cov-report=term-missing --cov-report=xml:coverage.xml
 ```
 
 ## Safety
