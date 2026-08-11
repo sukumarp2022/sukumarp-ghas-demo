@@ -138,9 +138,8 @@ These two manifests are intentionally isolated from the application:
 
 - `demo/vulnerable/requirements.txt` contains `requests==2.19.1`, which has
   known security advisories.
-- `demo/malware/package.json` contains
-  `@sqlite-labs/nodesql@0.0.1-security`, which is listed in the GitHub
-  Advisory Database as malware under `GHSA-86f7-qh62-pq7c`.
+- `demo/malware/package.json` contains `spoint@0.1.700`, which is listed in the
+  GitHub Advisory Database as malware under `GHSA-72h3-pwwh-68cx`.
 
 Do not run `pip install` or `npm install` against either demo directory. The
 packages are declared only so the dependency graph can identify them.
