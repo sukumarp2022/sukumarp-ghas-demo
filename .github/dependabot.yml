@@ -5,3 +5,23 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
+
+  # These manifests are demo-only. Dependabot scans them, but CI never installs
+  # the packages from these directories.
+  - package-ecosystem: pip
+    directory: "/demo/vulnerable"
+    schedule:
+      interval: weekly
+    labels:
+      - demo
+      - vulnerability
+    open-pull-requests-limit: 1
+
+  - package-ecosystem: pip
+    directory: "/demo/malware"
+    schedule:
+      interval: weekly
+    labels:
+      - demo
+      - malware
+    open-pull-requests-limit: 1

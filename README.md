@@ -132,7 +132,33 @@ git commit -m "fix: upgrade vulnerable dependency"
 git push
 ```
 
-## Demo 4: Copilot agent-assisted coverage
+## Demo 4: Dependabot vulnerability and malware alerts
+
+These two manifests are intentionally isolated from the application:
+
+- `demo/vulnerable/requirements.txt` contains `requests==2.19.1`, which has
+  known security advisories.
+- `demo/malware/requirements.txt` contains `bigtime==0.1.0`, which is listed in
+  the GitHub Advisory Database as malware under
+  `GHSA-28hg-x9rg-9j9w`.
+
+Do not run `pip install` against either demo directory. The packages are
+declared only so the dependency graph can identify them.
+
+1. Open **Settings → Advanced Security** and confirm **Dependabot alerts** and
+   **Dependabot security updates** are enabled.
+2. Open **Security and quality → Dependabot**.
+3. Open the vulnerability alert and show the package, severity, advisory, and
+   fixed version when one exists.
+4. Open the malware alert and show the malware classification and advisory.
+5. Use the files in `demo/vulnerable` and `demo/malware` to explain that
+   dependency alerts are generated from manifests, not from running packages.
+
+The `.github/dependabot.yml` file has separate update entries for these
+directories so Dependabot can maintain the fixtures without changing the safe
+runtime dependencies.
+
+## Demo 5: Copilot agent-assisted coverage
 
 The baseline tests intentionally omit the validation and no-results branches in
 `app/main.py`.
