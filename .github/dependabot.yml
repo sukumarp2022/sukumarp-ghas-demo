@@ -17,7 +17,7 @@ updates:
       - vulnerability
     open-pull-requests-limit: 1
 
-  - package-ecosystem: pip
+  - package-ecosystem: npm
     directory: "/demo/malware"
     schedule:
       interval: weekly

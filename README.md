@@ -138,12 +138,12 @@ These two manifests are intentionally isolated from the application:
 
 - `demo/vulnerable/requirements.txt` contains `requests==2.19.1`, which has
   known security advisories.
-- `demo/malware/requirements.txt` contains `bigtime==0.1.0`, which is listed in
-  the GitHub Advisory Database as malware under
-  `GHSA-28hg-x9rg-9j9w`.
+- `demo/malware/package.json` contains
+  `@sqlite-labs/nodesql@0.0.1-security`, which is listed in the GitHub
+  Advisory Database as malware under `GHSA-86f7-qh62-pq7c`.
 
-Do not run `pip install` against either demo directory. The packages are
-declared only so the dependency graph can identify them.
+Do not run `pip install` or `npm install` against either demo directory. The
+packages are declared only so the dependency graph can identify them.
 
 1. Open **Settings → Advanced Security** and confirm **Dependabot alerts** and
    **Dependabot security updates** are enabled.
@@ -156,7 +156,8 @@ declared only so the dependency graph can identify them.
 
 The `.github/dependabot.yml` file has separate update entries for these
 directories so Dependabot can maintain the fixtures without changing the safe
-runtime dependencies.
+runtime dependencies. Malware alerts currently apply to npm packages, so the
+malware fixture intentionally uses `package.json`.
 
 ## Demo 5: Copilot agent-assisted coverage
 
