@@ -10,7 +10,7 @@ merged into production code.
 | User-controlled file path | Path injection | High |
 | User-controlled URL | Server-side request forgery | High |
 | User-controlled serialized payload | Unsafe deserialization | High |
-| MD5 used for security | Weak cryptographic algorithm | Medium |
+| User-controlled template | Template injection | High |
 
 Open the branch's CodeQL run under **Actions**, or open
 **Security and quality → Code scanning** and filter by

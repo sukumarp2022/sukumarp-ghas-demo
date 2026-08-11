@@ -1,12 +1,11 @@
 """Intentionally vulnerable examples for the CodeQL demonstration."""
 
-import hashlib
 import pickle
 import subprocess
 from pathlib import Path
 
 import requests
-from flask import request
+from flask import render_template_string, request
 
 
 def run_requested_command():
@@ -35,6 +34,6 @@ def load_requested_payload():
     return pickle.loads(payload)
 
 
-def hash_requested_value():
-    value = request.args.get("value", "")
-    return hashlib.md5(value.encode(), usedforsecurity=True).hexdigest()
+def render_requested_template():
+    template = request.args.get("template", "")
+    return render_template_string(template)
